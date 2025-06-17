@@ -1,0 +1,4 @@
+FROM zhichengg/stb-docker:latest
+COPY . .
+RUN pip install -U openai -i https://pypi.tuna.tsinghua.edu.cn/simple
+CMD ["python", "main.py"]

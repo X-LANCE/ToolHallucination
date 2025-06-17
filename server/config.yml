@@ -1,0 +1,10 @@
+api_key: sk-WHLU6PYPFMJ3QUihDf94419043664e31951059F9BaF23260
+api_base: https://api.xi-ai.cn/v1
+model: gpt-4o-2024-08-06
+temperature: 0
+toolbench_url: http://8.130.32.149:8080/rapidapi
+tools_folder: "./tools"
+cache_folder: "./tool_response_cache"
+is_save: true
+port: 8080
+log_file: "./server.log"

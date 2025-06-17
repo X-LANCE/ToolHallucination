@@ -1,0 +1,713 @@
+[
+    {
+        "api_list": [
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/product/{productID}/feedbacks",
+                "api_description": "This ressource displays the feedbacks for one product",
+                "required_parameters": [
+                    {
+                        "name": "productID",
+                        "type": "NUMBER",
+                        "description": "The Aliexpress product ID",
+                        "default": "32845755054"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "page",
+                        "type": "STRING",
+                        "description": "",
+                        "default": "1"
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/shipping/{productID}",
+                "api_description": "This ressource displays the shipping information for one product",
+                "required_parameters": [
+                    {
+                        "name": "productID",
+                        "type": "NUMBER",
+                        "description": "The Aliexpress product ID",
+                        "default": "4000961087745"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "toCountry",
+                        "type": "STRING",
+                        "description": "The country to calcul the freight ",
+                        "default": "FR"
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/category/{categoryId}/products",
+                "api_description": "This resource represents the product list; you can filter by\n - attributes\n - minimum price\n - brand \n - ship to country\n - ship from country\n - max sale price \n<br> **For information, One first request, you must not indicate the attr & brands, you retrieve this informations in the Product Object.**",
+                "required_parameters": [
+                    {
+                        "name": "categoryId",
+                        "type": "NUMBER",
+                        "description": "The Aliexpress product ID",
+                        "default": "100003819"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "brand",
+                        "type": "STRING",
+                        "description": "filter the products by brand. <br> In order todo this :<br> 1. Filter the products with all filters that you want,  without **brand** <br> 2. Search the `brands` element at the same level that pagination level (limit, page hasPrevPage ... ) <br> 3. Indicate the content id  <br>content:[<br>{ <br>brandName:MEGE KNIGHT<br>**brandId:201549252** <br>brandLogo://ae01.alicdn.com/kf/HTB1XyEwE1OSBuNjy0Fdq6zDnVXaw.jpg<br>}<br>If you want filter by the MEGE KNIGHT you must indicate 201549252. <br> **Warning, when you indicate brand element, the attr parameter must be empty.**",
+                        "default": ""
+                    },
+                    {
+                        "name": "shipToCountry",
+                        "type": "STRING",
+                        "description": "Filter the products that can be to ship to the country wished. you can use the service countriesAvailable to set the good information",
+                        "default": "FR"
+                    },
+                    {
+                        "name": "attr",
+                        "type": "STRING",
+                        "description": "filter the products by an attribute.<br> In order todo this :<br>1. Filter the products with all filters that you want,  without **attr** <br>2. Search the `attributes` element at the same level that pagination level (limit, page hasPrevPage ... ) <br>3. concatenate the content parent with children element <br>content:[<br>{ <br>**attributeId:14** <br>displayType:colour_atla <br>attributeValues:[ <br>{<br>**attributeValueId:10**<br>attributeValueName:Red<br>selected:true<br>}<br>If you want filter the products by the color red, you must indicate 14-10.<br> **Warning, when you indicate attribute element, the brand parameter must be empty.**",
+                        "default": ""
+                    },
+                    {
+                        "name": "maxSalePrice",
+                        "type": "NUMBER",
+                        "description": "Filter products by the max Sale price",
+                        "default": 50
+                    },
+                    {
+                        "name": "getShopInformation",
+                        "type": "BOOLEAN",
+                        "description": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "targetCurrency",
+                        "type": "STRING",
+                        "description": "Represents the currency whished when the product is retrieved",
+                        "default": ""
+                    },
+                    {
+                        "name": "lg",
+                        "type": "STRING",
+                        "description": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "shipFromCountry",
+                        "type": "STRING",
+                        "description": "Filter the products that can be to ship from  country wished. you can use the service countriesAvailable to set the good information",
+                        "default": "CN"
+                    },
+                    {
+                        "name": "minSalePrice",
+                        "type": "NUMBER",
+                        "description": "Filter products by the min Sale price",
+                        "default": 10
+                    },
+                    {
+                        "name": "sort",
+                        "type": "STRING",
+                        "description": "filter the products",
+                        "default": "NEWEST_DESC"
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/bestSales/SortedByNewest",
+                "api_description": "Retrieves the last best product added in the system",
+                "required_parameters": [],
+                "optional_parameters": [
+                    {
+                        "name": "limit",
+                        "type": "NUMBER",
+                        "description": "",
+                        "default": "10"
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/product/{productId}/historic/prices",
+                "api_description": "This endpoint returns the prices historic of product loaded by a client",
+                "required_parameters": [
+                    {
+                        "name": "productId",
+                        "type": "string",
+                        "description": "",
+                        "default": "1005002011652590"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "maxDate",
+                        "type": "STRING",
+                        "description": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "minDate",
+                        "type": "STRING",
+                        "description": "",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/product/{productId}/historic/sales",
+                "api_description": "This endpoint returns the sales historic of product loaded by a client",
+                "required_parameters": [
+                    {
+                        "name": "productId",
+                        "type": "string",
+                        "description": "",
+                        "default": "1005002011652590"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "minDate",
+                        "type": "STRING",
+                        "description": "",
+                        "default": ""
+                    },
+                    {
+                        "name": "maxDate",
+                        "type": "STRING",
+                        "description": "",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/v2/categories",
+                "api_description": "This resource represents a category in the system. We have 3 provider type <br> - API\n -WEBSITE\n -HYBRID\n <br> 1.API<br> This category is manager by the API, the ID indicated is the Alibaba ID and not Aliexpress ID.<br> 2. WESITE <br> This category is scraping of Aliexpress website <br> 3. HYBRID <br> This category has correspondence between Aliexpress and API; you have in the same object twice ID `alie_category_id` for Website and `api_category_id` for API<br> In the API to request by example product, in the category ID, you can indicate the both.  ",
+                "required_parameters": [],
+                "optional_parameters": [],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/currenciesAvailable",
+                "api_description": "This resource represents a currency in the system. Each currency is composed of Code and Name Attributes. This service can be used to communicate with product service with the target currency attribute.",
+                "required_parameters": [],
+                "optional_parameters": [],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/countriesAvailableToShipping",
+                "api_description": "This resource represents the countries. Each country is composed of Code and Name Attributes. This service can be used to communicate with product service for the countryFrom and countryTo query parameters.",
+                "required_parameters": [],
+                "optional_parameters": [],
+                "method": "GET"
+            },
+            {
+                "category_name": "eCommerce",
+                "tool_name": "Magic AliExpress",
+                "api_name": "/api/bestSales/product/{productID}/salesHistory",
+                "api_description": "This resource returns the historic of sales",
+                "required_parameters": [
+                    {
+                        "name": "productID",
+                        "type": "NUMBER",
+                        "description": "The Aliexpress product ID",
+                        "default": "4001017422834"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "minDate",
+                        "type": "STRING",
+                        "description": "filter the historic by min date",
+                        "default": "2020-09-28"
+                    },
+                    {
+                        "name": "maxDate",
+                        "type": "STRING",
+                        "description": "filter the historic by max date",
+                        "default": "2021-08-05"
+                    }
+                ],
+                "method": "GET"
+            }
+        ],
+        "query": "As an online retailer, I want to offer a wide range of products to my customers. Can you provide me with a list of products in the category? I would like to filter the products by brand, attributes, and price range. Additionally, I need the feedback from customers who have purchased these products, including their feedback content, ratings, and photos. Thank you!",
+        "relevant APIs": [
+            [
+                "Magic AliExpress",
+                "/api/category/{categoryId}/products"
+            ],
+            [
+                "Magic AliExpress",
+                "/api/product/{productID}/feedbacks"
+            ]
+        ],
+        "query_id": 10160
+    },
+    {
+        "api_list": [
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Current Block Number",
+                "api_description": "Get the current block number of the Binance Smart Chain!",
+                "required_parameters": [],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Account Balance",
+                "api_description": "Get the BNB balance for an address on the Binance Smart Chain.",
+                "required_parameters": [
+                    {
+                        "name": "address",
+                        "type": "STRING",
+                        "description": "Address you want to scan!",
+                        "default": "0x0000000000000000000000000000000000000123"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Block",
+                "api_description": "Get full data from a specific block on the Binance Smart Chain!",
+                "required_parameters": [
+                    {
+                        "name": "block",
+                        "type": "STRING",
+                        "description": "Block you want to scan!",
+                        "default": "123"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET",
+                "template_response": {
+                    "_type": "str",
+                    "baseFeePerGas": "NoneType",
+                    "difficulty": "str",
+                    "extraData": "str",
+                    "gasLimit": "str",
+                    "gasUsed": "str",
+                    "hash": "str",
+                    "miner": "str",
+                    "nonce": "str",
+                    "number": "int",
+                    "parentHash": "str",
+                    "timestamp": "int",
+                    "transactions": "empty list"
+                }
+            },
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Transaction",
+                "api_description": "Get full data from a specific transaction on the Binance Smart Chain!",
+                "required_parameters": [
+                    {
+                        "name": "hash",
+                        "type": "STRING",
+                        "description": "Transaction you want to scan!",
+                        "default": "0x675e20f06597d976c23cef8fd6ff8f9c56b75af711a22d8c2d936b49cc3ac2d9"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET",
+                "template_response": {
+                    "_type": "str",
+                    "accessList": "NoneType",
+                    "blockNumber": "int",
+                    "blockHash": "str",
+                    "chainId": "str",
+                    "data": "str",
+                    "from": "str",
+                    "gasLimit": "str",
+                    "gasPrice": "str",
+                    "hash": "str",
+                    "maxFeePerGas": "NoneType",
+                    "maxPriorityFeePerGas": "NoneType",
+                    "nonce": "int",
+                    "signature": {
+                        "_type": "str",
+                        "networkV": "str",
+                        "r": "str",
+                        "s": "str",
+                        "v": "int"
+                    },
+                    "to": "str",
+                    "type": "int",
+                    "value": "str"
+                }
+            },
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Account Transaction History",
+                "api_description": "Get an array of all transactions of an address on the Binance Smart Chain.",
+                "required_parameters": [
+                    {
+                        "name": "address",
+                        "type": "STRING",
+                        "description": "Address you want to scan!",
+                        "default": "0x0000000000000000000000000000000000000123"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET",
+                "template_response": {
+                    "status": "str",
+                    "message": "str",
+                    "result": [
+                        {
+                            "blockNumber": "str",
+                            "timeStamp": "str",
+                            "hash": "str",
+                            "nonce": "str",
+                            "blockHash": "str",
+                            "transactionIndex": "str",
+                            "from": "str",
+                            "to": "str",
+                            "value": "str",
+                            "gas": "str",
+                            "gasPrice": "str",
+                            "isError": "str",
+                            "txreceipt_status": "str",
+                            "input": "str",
+                            "contractAddress": "str",
+                            "cumulativeGasUsed": "str",
+                            "gasUsed": "str",
+                            "confirmations": "str",
+                            "methodId": "str",
+                            "functionName": "str",
+                            "_list_length": 1
+                        }
+                    ]
+                }
+            },
+            {
+                "category_name": "Finance",
+                "tool_name": "Binance Smart Chain",
+                "api_name": "Account Transaction Count",
+                "api_description": "Get the number of transactions done by an address on the Binance Smart Chain.",
+                "required_parameters": [
+                    {
+                        "name": "address",
+                        "type": "STRING",
+                        "description": "Address you want to scan!",
+                        "default": "0x0000000000000000000000000000000000000123"
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "network",
+                        "type": "STRING",
+                        "description": "Specify wich network you wanna use! (mainnet/testnet)",
+                        "default": ""
+                    }
+                ],
+                "method": "GET",
+                "template_response": {
+                    "message": "str"
+                }
+            }
+        ],
+        "query": "Hey there! I'm curious about a specific transaction on the Binance Smart Chain. Can you provide me with the full data for the transaction? Additionally, I would like to know the number of transactions on the testnet. Thank you!",
+        "relevant APIs": [
+            [
+                "Binance Smart Chain",
+                "Transaction"
+            ],
+            [
+                "Binance Smart Chain",
+                "Account Transaction Count"
+            ]
+        ],
+        "query_id": 11686
+    },
+    {
+        "api_list": [
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "HcPassThrough",
+                "api_description": " ",
+                "required_parameters": [],
+                "optional_parameters": [],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "HcLocal",
+                "api_description": " ",
+                "required_parameters": [],
+                "optional_parameters": [],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "GetRecognizeDocument",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "description": "Name of the file to recognize.",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "storage",
+                        "type": "STRING",
+                        "description": "The image storage.",
+                        "default": ""
+                    },
+                    {
+                        "name": "language",
+                        "type": "NUMBER",
+                        "description": "Language for OCR Core Aspose.OCR.Core.Transport \n                    BaseStructures.Language.LanguageGroup\n                \n            ",
+                        "default": 1
+                    },
+                    {
+                        "name": "dsrMode",
+                        "type": "NUMBER",
+                        "description": "An option to switch DSR algorithm",
+                        "default": 2
+                    },
+                    {
+                        "name": "folder",
+                        "type": "STRING",
+                        "description": "The image folder.",
+                        "default": ""
+                    },
+                    {
+                        "name": "skewCorrect",
+                        "type": "BOOLEAN",
+                        "description": "An option to switch skew correction algorithm",
+                        "default": true
+                    },
+                    {
+                        "name": "resultType",
+                        "type": "NUMBER",
+                        "description": "The type of result: Text, HOCR, PDF or their combinations",
+                        "default": 1
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "DownloadFile",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "path",
+                        "type": "STRING",
+                        "description": "File path e.g. '/folder/file.ext'",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "versionId",
+                        "type": "STRING",
+                        "description": "File version ID to download",
+                        "default": ""
+                    },
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "GetFilesList",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "path",
+                        "type": "STRING",
+                        "description": "Folder path e.g. '/folder'",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "ObjectExists",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "path",
+                        "type": "STRING",
+                        "description": "File or folder path e.g. '/file.ext' or '/folder'",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "versionId",
+                        "type": "STRING",
+                        "description": "File version ID",
+                        "default": ""
+                    },
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "GetDiscUsage",
+                "api_description": " ",
+                "required_parameters": [],
+                "optional_parameters": [
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "GetFileVersions",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "path",
+                        "type": "STRING",
+                        "description": "File path e.g. '/file.ext'",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "method": "GET"
+            },
+            {
+                "category_name": "Other",
+                "tool_name": "Aspose.Cells Cloud",
+                "api_name": "StorageExists",
+                "api_description": " ",
+                "required_parameters": [
+                    {
+                        "name": "storageName",
+                        "type": "STRING",
+                        "description": "Storage name",
+                        "default": ""
+                    }
+                ],
+                "optional_parameters": [],
+                "method": "GET"
+            }
+        ],
+        "query": "I want to download the latest version of a file. Can you provide me with the download link for the latest version of the file?",
+        "relevant APIs": [
+            [
+                "Aspose.Cells Cloud",
+                "GetFileVersions"
+            ],
+            [
+                "Aspose.Cells Cloud",
+                "DownloadFile"
+            ]
+        ],
+        "query_id": 15511
+    }
+]
